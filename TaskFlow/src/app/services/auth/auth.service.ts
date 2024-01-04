@@ -11,16 +11,17 @@ import { AuthenticationRequestDTO } from 'src/app/dto/auth/requests/auth-request
 })
 export class AuthService {
 
+  private apiUrl = `${environment.apiUrl}/auth`;
+
   constructor(
     private http: HttpClient
-    ) {}
+  ) {}
 
-  register(registerRequest: RegisterRequestDTO ): Observable< AuthenticationResponseDTO > {
-    return this.http.post<any>(`${environment.apiUrl}/register`, registerRequest);
+  register(registerRequest: RegisterRequestDTO): Observable<AuthenticationResponseDTO> {
+    return this.http.post<AuthenticationResponseDTO>(`${this.apiUrl}/register`, registerRequest);
   }
 
-  authenticate(authenticationRequest: AuthenticationRequestDTO ): Observable< AuthenticationResponseDTO > {
-    return this.http.post<any>(`${environment.apiUrl}/authenticate`, authenticationRequest);
+  authenticate(authenticationRequest: AuthenticationRequestDTO): Observable<AuthenticationResponseDTO> {
+    return this.http.post<AuthenticationResponseDTO>(`${this.apiUrl}/authenticate`, authenticationRequest);
   }
-
 }
