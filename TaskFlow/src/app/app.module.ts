@@ -12,12 +12,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
+import { NavbarComponent } from './components/navigation/navbar/navbar.component';
+import { SidebarComponent } from './components/navigation/sidebar/sidebar.component';
+import { TasksComponent } from './components/dashboard/tasks/tasks.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    NavbarComponent,
+    SidebarComponent,
+    TasksComponent
   ],
   imports: [
     BrowserModule,
