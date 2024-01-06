@@ -5,6 +5,7 @@ export interface AuthState {
   user: AuthenticationResponseDTO | null;
   token: string | null;
   error: string | null;
+  isRegistered: boolean; 
 }
 
 export const initialAuthState: AuthState = {
@@ -12,4 +13,5 @@ export const initialAuthState: AuthState = {
   user: null,
   token: null,
   error: null,
+  isRegistered: false,
 };

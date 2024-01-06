@@ -14,6 +14,17 @@ export const initialState: AuthState = {
 
 export const authReducer = createReducer(
   initialState,
+
+  on(AuthActions.registerSuccess, (state, { response }) => {
+    return {
+      ...state,
+      isRegisterd: true,
+      user: response,
+      token: response.token,
+      error: null
+    };
+  }),
+
   on(AuthActions.authenticateSuccess, (state, { response }) => {
     return {
       ...state,
@@ -24,7 +35,5 @@ export const authReducer = createReducer(
     };
   }),
 
-  on(AuthActions.authenticateFailure, 
-    (state, { error }) => ({ ...state, user: null, error }))
 
 );
