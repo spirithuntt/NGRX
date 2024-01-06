@@ -33,6 +33,9 @@ export class RegisterComponent implements OnDestroy {
   
     console.log('Dispatching register action...');
   
+    // Dispatch the register action
+    this.store.dispatch(AuthActions.register({ registerRequest }));
+  
     // Subscribe once and store the subscription
     const authSubscription = this.store.pipe(
       select('auth'),
@@ -40,7 +43,7 @@ export class RegisterComponent implements OnDestroy {
     ).subscribe((authState) => {
       console.log('Received auth state:', authState);
   
-      if (authState.user) {
+      if (authState.isRegistered) {
         console.log('Registration success. Redirecting to login...');
         this.router.navigate(['/login']);
         // Unsubscribe after successful registration
@@ -51,10 +54,8 @@ export class RegisterComponent implements OnDestroy {
         authSubscription.unsubscribe();
       }
     });
-  
-    // Dispatch the register action
-    this.store.dispatch(AuthActions.register({ registerRequest }));
   }
+  
   
     
 

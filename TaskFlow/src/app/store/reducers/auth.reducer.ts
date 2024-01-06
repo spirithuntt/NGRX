@@ -20,7 +20,7 @@ export const authReducer = createReducer(
       ...state,
       isRegisterd: true,
       user: response,
-      token: response.token,
+      token: null,
       error: null
     };
   }),
@@ -36,4 +36,25 @@ export const authReducer = createReducer(
   }),
 
 
+  on(AuthActions.registerFailure, (state) => {
+    return {
+      ...state,
+      isAuthenticated: false,
+      isRegistered: false,
+      user: null,
+      token: null,
+      error: 'Registration failed', 
+    };
+  }),
+
+  on(AuthActions.authenticateFailure, (state) => {
+    return {
+      ...state,
+      isAuthenticated: false,
+      isRegistered: false,
+      user: null,
+      token: null,
+      error: 'Authentication failed', 
+    };
+  })
 );
