@@ -1,13 +1,15 @@
-import { User } from '../../modal/entities/user.interface'; 
+import { AuthenticationResponseDTO } from 'src/app/dto/auth/responses/auth-response.dto';
 
 export interface AuthState {
   isAuthenticated: boolean;
-  user: User | null;
+  user: AuthenticationResponseDTO | null;
+  token: string | null;
   error: string | null;
 }
 
 export const initialAuthState: AuthState = {
   isAuthenticated: false,
   user: null,
+  token: null,
   error: null,
 };
