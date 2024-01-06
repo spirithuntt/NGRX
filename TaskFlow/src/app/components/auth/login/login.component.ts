@@ -5,6 +5,7 @@ import * as AuthActions from '../../../store/actions/auth.actions';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginComponent implements OnDestroy {
 
   constructor(
     private store: Store<AppState>,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private router: Router
   ) {}
 
   onSubmit() {
@@ -48,6 +50,8 @@ export class LoginComponent implements OnDestroy {
         if (authState.token !== null) {
           this.cookieService.set('jwtToken', authState.token);
         }
+
+        this.router.navigate(['/tasks']); 
 
       } else if (authState.error) {
         console.error('Authentication error:', authState.error);
