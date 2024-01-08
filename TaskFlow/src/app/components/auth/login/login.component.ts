@@ -46,9 +46,10 @@ export class LoginComponent implements OnDestroy {
           sessionStorage.setItem('tokens', authState.user.tokens.toString());
         }
 
-        // Store token in HTTP cookie
+        // Store token in cookie
         if (authState.token !== null) {
-          this.cookieService.set('jwtToken', authState.token);
+          // this.cookieService.set('jwtToken', authState.token);
+          sessionStorage.setItem('jwtToken', authState.token);
         }
 
         this.router.navigate(['/tasks']); 
